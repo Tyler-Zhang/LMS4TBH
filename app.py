@@ -15,9 +15,9 @@ def respond():
     messages = request.get_json()['messages']
     text = ""
     for message in messages:
-        text += message['message']
+        text += message['message'] + " "
+    print text 
     response = responder.respond(text)
-    print response
     return response
 
 
