@@ -54,13 +54,9 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _LoginCard = __webpack_require__(183);
+	var _LoginCard = __webpack_require__(184);
 
 	var _LoginCard2 = _interopRequireDefault(_LoginCard);
-
-	var _MainCard = __webpack_require__(184);
-
-	var _MainCard2 = _interopRequireDefault(_MainCard);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -69,8 +65,12 @@
 	_reactDom2.default.render(_react2.default.createElement(
 		'div',
 		null,
-		_react2.default.createElement(_LoginCard2.default, null),
-		_react2.default.createElement(_MainCard2.default, null)
+		_react2.default.createElement(
+			'h1',
+			null,
+			'Hello world'
+		),
+		_react2.default.createElement(_LoginCard2.default, null)
 	), app);
 
 /***/ },
@@ -21765,7 +21765,8 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 183 */
+/* 183 */,
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21798,39 +21799,12 @@
 		}
 
 		_createClass(LoginCard, [{
-			key: 'loginHandler',
-			value: function loginHandler() {
-				alert('login');
-			}
-		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'container' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'row' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-12' },
-							_react2.default.createElement(
-								'h1',
-								null,
-								'LMS 4 TBH'
-							),
-							_react2.default.createElement(
-								'button',
-								{ onClick: this.loginHandler },
-								' Login '
-							),
-							_react2.default.createElement(
-								'p',
-								null,
-								'post some brutally honest tbhs to ur friends\' walls'
-							)
-						)
-					)
+					null,
+					' Login '
 				);
 			}
 		}]);
@@ -21839,228 +21813,6 @@
 	}(_react2.default.Component);
 
 	exports.default = LoginCard;
-
-/***/ },
-/* 184 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _MessagesCard = __webpack_require__(185);
-
-	var _MessagesCard2 = _interopRequireDefault(_MessagesCard);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var testMessageObj = [{ name: "tyler", message: "FUCK YOU BIG BOY" }, { name: "Charlie", message: "FUCK YOU BIG BOY" }, { name: "Kevin", message: "FUCK YOU BIG BOY" }, { name: "Ayy", message: "FUCK YOU BIG BOY" }, { name: "tyler", message: "FUCK YOU BIG BOY" }, { name: "Charlie", message: "FUCK YOU BIG BOY" }, { name: "Kevin", message: "FUCK YOU BIG BOY" }, { name: "Ayy", message: "FUCK YOU BIG BOY" }];
-
-	var MainCard = function (_React$Component) {
-		_inherits(MainCard, _React$Component);
-
-		function MainCard() {
-			_classCallCheck(this, MainCard);
-
-			return _possibleConstructorReturn(this, (MainCard.__proto__ || Object.getPrototypeOf(MainCard)).apply(this, arguments));
-		}
-
-		_createClass(MainCard, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'container-fluid' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'row' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-3 col-md-offset-1' },
-							_react2.default.createElement(
-								'h1',
-								null,
-								' Post status button here '
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-7 col-md-offset-1' },
-							_react2.default.createElement(_MessagesCard2.default, { data: testMessageObj })
-						)
-					)
-				);
-			}
-		}]);
-
-		return MainCard;
-	}(_react2.default.Component);
-
-	exports.default = MainCard;
-
-/***/ },
-/* 185 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Message = function (_React$Component) {
-	    _inherits(Message, _React$Component);
-
-	    function Message() {
-	        _classCallCheck(this, Message);
-
-	        return _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).apply(this, arguments));
-	    }
-
-	    _createClass(Message, [{
-	        key: "render",
-	        value: function render() {
-	            return _react2.default.createElement(
-	                "li",
-	                { className: "row", style: { margin: "10px" } },
-	                _react2.default.createElement(
-	                    "div",
-	                    { className: "col-md-10 col-md-offset-1", style: { borderStyle: "solid", padding: "10px" } },
-	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "col-md-1" },
-	                        _react2.default.createElement("img", { src: "img/tempprofile.png" }),
-	                        _react2.default.createElement(
-	                            "p",
-	                            { className: "text-center" },
-	                            this.props.name
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "col-md-8 col-md-offset-1" },
-	                        _react2.default.createElement(
-	                            "p",
-	                            { className: "text-center", style: { margin: "10px" } },
-	                            " ",
-	                            this.props.message,
-	                            " "
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "col-md-1 col-md-offset-1" },
-	                        _react2.default.createElement(
-	                            "ul",
-	                            { style: { listStyle: "none", width: "100%", paddingLeft: "0", verticalAlign: "middle" } },
-	                            _react2.default.createElement(
-	                                "li",
-	                                null,
-	                                " ",
-	                                _react2.default.createElement(
-	                                    "button",
-	                                    { className: "btn btn-success btn-block" },
-	                                    " ",
-	                                    _react2.default.createElement("i", { className: "fa fa-check" }),
-	                                    " "
-	                                ),
-	                                " "
-	                            ),
-	                            _react2.default.createElement(
-	                                "li",
-	                                null,
-	                                " ",
-	                                _react2.default.createElement(
-	                                    "button",
-	                                    { className: "btn btn-danger btn-block" },
-	                                    " ",
-	                                    _react2.default.createElement("i", { className: "fa fa-times" }),
-	                                    " "
-	                                )
-	                            )
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Message;
-	}(_react2.default.Component);
-
-	var MessagesCard = function (_React$Component2) {
-	    _inherits(MessagesCard, _React$Component2);
-
-	    function MessagesCard() {
-	        _classCallCheck(this, MessagesCard);
-
-	        return _possibleConstructorReturn(this, (MessagesCard.__proto__ || Object.getPrototypeOf(MessagesCard)).apply(this, arguments));
-	    }
-
-	    _createClass(MessagesCard, [{
-	        key: "render",
-	        value: function render() {
-	            if (!this.props.data) return _react2.default.createElement(
-	                "h1",
-	                { className: "text-center" },
-	                " No messages to display yet "
-	            );
-
-	            return _react2.default.createElement(
-	                "div",
-	                null,
-	                _react2.default.createElement(
-	                    "h3",
-	                    { className: "text-center", style: { marginBottom: "50px" } },
-	                    " Messages For Approval"
-	                ),
-	                _react2.default.createElement(
-	                    "div",
-	                    { style: { overflow: "scroll", height: "500px" } },
-	                    _react2.default.createElement(
-	                        "ul",
-	                        { style: { "listStyle": "none" } },
-	                        this.props.data.map(function (v, i) {
-	                            return _react2.default.createElement(Message, { name: v.name, message: v.message, key: i });
-	                        })
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return MessagesCard;
-	}(_react2.default.Component);
-
-	exports.default = MessagesCard;
 
 /***/ }
 /******/ ]);
