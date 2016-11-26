@@ -31,10 +31,11 @@ export default class MessagesCard extends React.Component {
 
     constructor(props){
         super(props);
-        this.state={messages: null};
-
-        let userRef = db.ref(props.id + "/");
-        userRef.on('child_changed', (d) => this.processData(d));
+        this.state={
+            messages: null,
+            userRef: db.ref(props.id + "/")
+        };
+        this.state.userRef.on('child_changed', (d) => this.processData(d));
     }
 
     processData(d){
@@ -49,10 +50,37 @@ export default class MessagesCard extends React.Component {
 
     post(idx){
         console.log("post " + idx);
+
+        let user = this.state.messages[idx];
+
+        FB.api(
+            `/${user.Id}/feed`,
+            "POST",
+            {
+                "message": user.tbh
+            },
+            function (response) {
+                if (response && !response.error) {
+                    markAsPosted(idx);
+                }
+            }
+        );
     }
 
     remove(idx){
         console.log("remove " + idx);
+        markAsPosted(idx);
+    }
+
+    markAsPosted(idx) {
+        var removeUserName = this.state.messages[idx].name;
+        
+        this.state.userRef.once('value').then(v => {
+            console.log("firebase data");
+            console.log(v);
+        })
+
+        console.log("marked as posted " + idx);
     }
 
     render(){
