@@ -1,19 +1,8 @@
 import React from 'react';
 import MessagesCard from './MessagesCard';
 
-var testMessageObj = 
-[
-	{name: "tyler", message: "FUCK YOU BIG BOY"},
-	{name: "Charlie", message: "FUCK YOU BIG BOY"},
-	{name: "Kevin", message: "FUCK YOU BIG BOY"},
-	{name: "Ayy", message: "FUCK YOU BIG BOY"},
-	{name: "tyler", message: "FUCK YOU BIG BOY"},
-	{name: "Charlie", message: "FUCK YOU BIG BOY"},
-	{name: "Kevin", message: "FUCK YOU BIG BOY"},
-	{name: "Ayy", message: "FUCK YOU BIG BOY"}
-]
-
 export default class MainCard extends React.Component {
+	
 	render() {
 		return (
 			<div class="container-fluid">
@@ -23,11 +12,10 @@ export default class MainCard extends React.Component {
 					</div>
 
 					<div class="col-md-7 col-md-offset-1">
-						<MessagesCard data={testMessageObj}/>
+						{(this.props.id)? <MessagesCard id={this.props.id}/>: <h1> No id recieved yet!</h1>}
 					</div>
 				</div>
 			</div>
 		)
 	}
-
 }

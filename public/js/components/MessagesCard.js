@@ -29,19 +29,43 @@ class Message extends React.Component{
 
 export default class MessagesCard extends React.Component {
 
-    render(){
-        if(!this.props.data)
-            return (
-                <h1 class="text-center"> No messages to display yet </h1>
-            )
+    constructor(props){
+        super(props);
+        this.state={messages: null};
+
+        let userRef = db.ref(props.id + "/");
+        userRef.on('child_changed', (d) => this.processData(d));
+    }
+
+    processData(d){
+        console.log(d);
+        const messageData = d.likes.filter(v => v.tbh && !v.posted);
+
+        const state = this.state;
+        state.messages = messageData;
         
+        this.setState(state);
+    }
+
+    post(idx){
+        console.log("post " + idx);
+    }
+
+    remove(idx){
+        console.log("remove " + idx);
+    }
+
+    render(){
+        if(!this.state.messages)
+            return (<h1>No messages to post yet!</h1>);
+
         return(
             <div>
                 <h3 class="text-center" style={{marginBottom:"50px"}}> Messages For Approval</h3>
                 <div style={{overflow:"scroll", height:"500px"}}>
                     <ul style={{"listStyle": "none"}}>
                         {
-                            this.props.data.map((v, i) =>  <Message name={v.name} message={v.message} key={i}/>)
+                            this.state.messages.map((v, i) =>  <Message name={v.name} message={v.tbh} key={i} post={(idx) => this.post(idx)} remove={(idx) => this.remove(idx)}/>)
                         }
                     </ul>
                 </div>
