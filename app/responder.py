@@ -6,6 +6,7 @@ def respond(text):
      #   msg = text_model.make_sentence_with_start("I")
     #except: 
     #    False
+    msg = None
     if (msg == None):
         msg = text_model.make_sentence()
     if (msg != None):
