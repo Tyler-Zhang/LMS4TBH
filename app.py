@@ -34,9 +34,9 @@ def respond():
     for message in messages:
         text += message['message'] + ". "
     text = filter(lambda x: x in printable, text)
-    print text
     response = responder.respond(text)
-
+    print fromUser
+    print db.get().val()
     fromUserObject = db.child(fromUser)
     oldIndex = fromUserObject.get().val()['index']
     print "Old Index" + str(oldIndex)
