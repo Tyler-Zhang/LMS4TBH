@@ -37,8 +37,8 @@ def respond():
     print text
     response = responder.respond(text)
 
-    index = db.child(fromUser).child('index')
-    print index.update(index.get().val() + 1)
+    fromUserObject = db.child(fromUser)
+    print index.update({index: fromUserObject.child('index').get().val() + 1})
 
     return response
 
