@@ -12,7 +12,7 @@ def send_js(path):
 
 @app.route('/respond', methods=['POST'])
 def respond():
-    messages = request.form['messages']
+    messages = request.get_json()['messages']
     text = ""
     for message in messages:
         text += message['message']
