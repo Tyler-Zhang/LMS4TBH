@@ -14,7 +14,7 @@ function click(cb){
         cb();
         return;
     }
-    if($('#messageGroup>div>div').length > 1000){
+    if($('#messageGroup>div>div').length > 500){
         cb();
     }else{
         setTimeout(function(){
