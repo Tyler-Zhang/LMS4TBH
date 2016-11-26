@@ -2,6 +2,9 @@ import os
 from flask import Flask, send_from_directory, make_response, request, current_app
 from flask_cors import CORS, cross_origin
 from app import responder
+import string
+
+printable = set(string.printable)
 
 app = Flask(__name__, static_url_path='')
 CORS(app)
@@ -16,7 +19,8 @@ def respond():
     text = ""
     for message in messages:
         text += message['message'] + " "
-    print text 
+    text = filter(lambda x: x in printable, text)
+    print text
     response = responder.respond(text)
     return response
 
