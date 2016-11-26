@@ -1,7 +1,6 @@
 import os
 from flask import Flask, send_from_directory, make_response, request, current_app
 from flask_cors import CORS, cross_origin
-import json
 from app import responder
 
 app = Flask(__name__, static_url_path='')
@@ -13,7 +12,7 @@ def send_js(path):
 
 @app.route('/respond', methods=['POST'])
 def respond():
-    messages = json.get_json()['messages']
+    messages = request.get_json()['messages']
     text = ""
     for message in messages:
         text += message['message']
