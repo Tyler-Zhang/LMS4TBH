@@ -2,10 +2,16 @@ import React from 'react'
 
 export default class LoginCard extends React.Component{
 
+	componentWillMount() {
+		this.setState({
+			loggedIn: false
+		});
+	}
+
 	componentDidMount() {
 	  window.fbAsyncInit = function() {
 	    FB.init({
-	      appId      : '1287422431281153',
+	      appId      : '223294414545251',
 	      cookie     : true,  // enable cookies to allow the server to access
 	                        // the session
 	      xfbml      : true,  // parse social plugins on this page
@@ -48,7 +54,6 @@ export default class LoginCard extends React.Component{
 	   	this.createDBPost(response.name);
 	    this.props.setAuth(response.name);
 	  	console.log('Successful login for: ' + response.name);
-	  	document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
 	  }.bind(this));
 	}
 
@@ -63,15 +68,16 @@ export default class LoginCard extends React.Component{
 	  if (response.status === 'connected') {
 	    // Logged into your app and Facebook.
 	    this.testAPI();
+	    this.setState({
+	    	loggedIn: true
+	    });
 	  } else if (response.status === 'not_authorized') {
 	    // The person is logged into Facebook, but not your app.
-	    document.getElementById('status').innerHTML = 'Please log ' +
-	      'into this app.';
+	    console.log('not not_authorized');
 	  } else {
 	    // The person is not logged into Facebook, so we're not sure if
 	    // they are logged into this app or not.
-	    document.getElementById('status').innerHTML = 'Please log ' +
-	    'into Facebook.';
+	    console.log('not logged into facebook');
 	  }
 	}
 
@@ -94,18 +100,21 @@ export default class LoginCard extends React.Component{
 	handleClick() {
 	  FB.login(this.checkLoginState(), {scope: 'publish_actions'});
 	}
- 
 	render() {
 		return (
-			<div class="container"> 
-				<div class="row">
-					<div class="col-md-12">
-						<h1>LMS 4 TBH</h1>
-						<button onClick={this.handleClick.bind(this)}> Login to Facebook </button>
-						<span id="status"></span>
-						<p>post some brutally honest tbhs to ur friends' walls</p>
+			<div>
+			{this.state.loggedIn ? null : <div id="login-card"> 
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1>LMS 4 TBH</h1>
+							<button onClick={this.handleClick.bind(this)}> Login to Facebook </button>
+							<span id="status"></span>
+							<p>post some brutally honest tbhs to ur friends' walls</p>
+						</div>
 					</div>
 				</div>
+			</div>}
 			</div>
 		);
 	}

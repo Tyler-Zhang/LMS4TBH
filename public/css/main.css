@@ -21,5 +21,13 @@ h1 {
 	text-align: center;
 }
 
+#login-card {
+	height: 100%;
+	width: 100%;
+	background-color: white;
+	position: absolute;
+	z-index: 999;
+}
+
 
 /*# sourceMappingURL=main.css.map */
