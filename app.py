@@ -55,8 +55,14 @@ def send_js(path):
 @app.route('/respond', methods=['POST'])
 @crossdomain(origin='*')
 def respond():
-    text = request.form['text']
-    return responder.respond(text)
+    messages = request.form['messages']
+    text = ""
+    for message in messages:
+        text += message['message']
+    response = responder.respond(text)
+    print response
+    return response
+
 
 
 if __name__ == '__main__':

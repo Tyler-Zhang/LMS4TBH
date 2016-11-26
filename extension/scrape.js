@@ -33,6 +33,8 @@ if(location.href.indexOf('?tid') > -1){
 
             }catch(e){}
         }); 
-        console.log(messages);
+        $.post('https://lmsfortbh.herokuapp.com/', messages, function(response){
+            alert(response);
+        });
     });
 }
