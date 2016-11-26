@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginCard from './components/LoginCard'
+import LoginCard from './components/LoginCard';
+import MainCard from './components/MainCard';
 
 
 const app = document.getElementById('app');
 
 ReactDOM.render(
 	<div>
-		<h1>Hello world</h1>
 		<LoginCard />
+		<MainCard />
 	</div>,
 app
 )
