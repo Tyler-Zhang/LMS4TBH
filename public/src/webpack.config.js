@@ -1,6 +1,5 @@
- const webpack = require('webpack');
-
- const debug = process.env.NODE_ENV !== "production";
+const webpack = require('webpack');
+const debug = process.env.NODE_ENV !== "production";
 
 const plugins = [
         new webpack.optimize.UglifyJsPlugin({
@@ -16,10 +15,10 @@ const plugins = [
 
  module.exports = {
      entry: {
-         dashboard:'./app.js'
+         app:'./app.js'
         },
      output: {
-         path: './website/public/js',
+         path: '../js/',
          filename: '[name].bundle.js'
      },
      watch:true,
