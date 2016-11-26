@@ -8,12 +8,16 @@ export default class MainCard extends React.Component {
 			this.state = {
 				post_id: response.id
 			}
+			console.log(response);
 		}.bind(this));
 	}
 
 	generateTBH() {
 		FB.api('/' + this.state.post_id + '/likes', function(response) {
 			console.log(response);
+			db.ref(window.userName + '/likes').set(response.data.map( (user) => {
+				return {...user, posted: false}
+			}));
 		}.bind(this));
 	}
 
