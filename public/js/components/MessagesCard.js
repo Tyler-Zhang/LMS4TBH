@@ -2,12 +2,28 @@ import React from 'react'
 
 class Message extends React.Component{
     
+    constructor(props){
+        super(props);
+
+        this.state = {
+            imgUrl: "img/tempprofile.png"
+        }
+
+        FB.api('/' + props.id + '/picture', {width: 300, height: 300}, function(response) {
+            const state = this.state;
+            state.imgUrl = response.data.url;
+            this.setState(state);
+
+	    }.bind(this));        
+    }
+
+
     render(){
         return(
             <li class="row" style={{margin:"10px"}}>
                 <div class="col-md-10 col-md-offset-1" style={{borderStyle:"solid", padding:"10px"}}> 
                     <div class="col-md-2">
-                        <img class="center-block" src="img/tempprofile.png"/>
+                        <img class="center-block" src={this.staet.imgUrl}/>
                         <p class="text-center">{this.props.name}</p>
                     </div>
                     <div class="col-md-7 col-md-offset-1">
@@ -96,7 +112,8 @@ export default class MessagesCard extends React.Component {
                 <div class="row" style={{overflow:"scroll", height:"500px"}}>
                     <ul style={{"listStyle": "none"}}>
                         {
-                            this.state.messages.map((v, i) =>  <Message name={v.name} message={v.tbh} key={i} post={() => this.post(i)} cancel={() => this.cancel(i)}/>)
+                            this.state.messages.map((v, i) =>  
+                            <Message name={v.name} message={v.tbh} id={v.id} key={v.id} post={() => this.post(i)} cancel={() => this.cancel(i)}/>)
                         }
                     </ul>
                 </div>
