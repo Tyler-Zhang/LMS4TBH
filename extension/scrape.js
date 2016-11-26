@@ -33,7 +33,7 @@ if(location.href.indexOf('?tid') > -1){
                 $(this).find('div[data-sigil="message-text"]>span').each(function(){
                     var text = $(this).text();
                     if(text.length > 2 && name == to){
-                        message+= (" " + text).replace(/ I /gi, " ______token_____ ").replace(/ you /gi, " I ").replace(/ ______token_____ /gi, " you ").substring(1) + ". ";
+                        message+= (" " + text).replace(/ I /gi, " ______token_____ ").replace(/ you /gi, " I ").replace(/ u /gi, " I ").replace(/ ur /gi, " I ").replace(/ ______token_____ /gi, " you ").substring(1) + ". ";
                     }
                 });
                 messages.push({name: name, message: message});
