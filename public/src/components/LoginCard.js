@@ -8,10 +8,14 @@ export default class LoginCard extends React.Component{
 
 	render() {
 		return (
-			<div> 
-				<h1>LMS 4 TBH</h1>
-				<button onClick={this.loginHandler}> Login </button>
-				<p>post some brutally honest tbhs to ur friends' walls</p>
+			<div class="container"> 
+				<div class="row">
+					<div class="col-md-12">
+						<h1>LMS 4 TBH</h1>
+						<button onClick={this.loginHandler}> Login </button>
+						<p>post some brutally honest tbhs to ur friends' walls</p>
+					</div>
+				</div>
 			</div>
 		);
 	}

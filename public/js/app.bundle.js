@@ -21523,21 +21523,29 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					null,
+					{ className: 'container' },
 					_react2.default.createElement(
-						'h1',
-						null,
-						'LMS 4 TBH'
-					),
-					_react2.default.createElement(
-						'button',
-						{ onClick: this.loginHandler },
-						' Login '
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						'post some brutally honest tbhs to ur friends\' walls'
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-12' },
+							_react2.default.createElement(
+								'h1',
+								null,
+								'LMS 4 TBH'
+							),
+							_react2.default.createElement(
+								'button',
+								{ onClick: this.loginHandler },
+								' Login '
+							),
+							_react2.default.createElement(
+								'p',
+								null,
+								'post some brutally honest tbhs to ur friends\' walls'
+							)
+						)
 					)
 				);
 			}
