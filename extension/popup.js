@@ -4,7 +4,7 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  chrome.tabs.executeScript(null, {code: "document.location = 'http://m.facebook.com/messages/?q=Susan Li'"}, function(){
+  chrome.tabs.executeScript(null, {code: "document.location = 'http://m.facebook.com/messages/?q=Samuel Yang'"}, function(){
     chrome.tabs.onUpdated.addListener(function(tabId , info) {
       if (info.status == "complete") {
         chrome.tabs.executeScript(null, { file: "jquery.js" }, function() {
