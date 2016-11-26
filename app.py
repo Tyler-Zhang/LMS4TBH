@@ -38,9 +38,11 @@ def respond():
     response = responder.respond(text)
 
     fromUserObject = db.child(fromUser)
-    newIndex = fromUserObject.child('index').get().val() + 1
+    oldIndex = fromUserObject.child('index').get().val()
+    print "Old Index" + str(oldIndex)
+    newIndex = oldIndex + 1
     print newIndex
-    index.update({"index": index})
+    index.update({"index": newIndex})
 
     return response
 
