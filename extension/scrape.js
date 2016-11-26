@@ -14,7 +14,7 @@ function click(cb){
         cb();
         return;
     }
-    if($('#messageGroup>div>div').length > 1000){
+    if($('#messageGroup>div>div').length > 500){
         cb();
     }else{
         setTimeout(function(){
@@ -23,12 +23,19 @@ function click(cb){
     }
 }
 if(location.href.indexOf('?tid') > -1){
+    var to = $('._4g34>._52jh').text();
     click(function(){
         var messages = [];
         $('#messageGroup>div>div').each(function(){
             try{
                 var name = JSON.parse($(this).attr('data-store'))['name'];
-                var message = $(this).find('div[data-sigil="message-text"]>span').text();
+                var message = "";
+                $(this).find('div[data-sigil="message-text"]>span').each(function(){
+                    var text = $(this).text();
+                    if(text.length > 2 && name == to){
+                        message+= (" " + text).replace(/ I /gi, " ______token_____ ").replace(/ you /gi, " I ").replace(/ ______token_____ /gi, " you ").substring(1) + ". ";
+                    }
+                });
                 messages.push({name: name, message: message});
 
             }catch(e){}

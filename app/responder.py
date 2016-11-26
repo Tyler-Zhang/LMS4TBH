@@ -2,10 +2,10 @@ import markovify
 
 def respond(text):
     text_model = markovify.Text(text)
-    #try:
-     #   msg = text_model.make_sentence_with_start("I")
-    #except: 
-    #    False
+    try:
+        msg = text_model.make_sentence_with_start("You")
+    except: 
+        False
     msg = None
     if (msg == None):
         msg = text_model.make_sentence()
