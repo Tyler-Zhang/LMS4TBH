@@ -49,12 +49,17 @@ export default class LoginCard extends React.Component{
 	// successful.  See statusChangeCallback() for when this call is made.
 	testAPI() {
 	  console.log('Welcome!  Fetching your information.... ');
+	FB.api('/' + window.userID + '/picture', {width: 300, height: 300}, function(response) {
+		this.props.setPicture(response.data.url);
+	}.bind(this));
 	  FB.api('/me', function(response) {
 	   	window.userName = response.name;
 	   	this.createDBPost(response.name);
 	    this.props.setAuth(response.name);
 	  	console.log('Successful login for: ' + response.name);
 	  }.bind(this));
+
+
 	}
 
 	// This is called with the results from from FB.getLoginStatus().
@@ -67,6 +72,7 @@ export default class LoginCard extends React.Component{
 	  // for FB.getLoginStatus().
 	  if (response.status === 'connected') {
 	    // Logged into your app and Facebook.
+	    window.userID = response.authResponse.userID;
 	    this.testAPI();
 	    this.setState({
 	    	loggedIn: true

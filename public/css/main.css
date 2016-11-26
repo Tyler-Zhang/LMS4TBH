@@ -9,16 +9,27 @@
 }
 
 body {
-  background-color: #f2f2f2;
+  background-image: url('https://uwaterloo.ca/president/sites/ca.president/files/resize/styles/sidebar-220px-wide/public/uploads/images/uw_president_01-w2-238x258.jpg?itok=vR99QiZI');
   font-family: "Comic Sans MS", cursive, sans-serif;
+  color: white;
 }
 
 .spaced {
   margin-top: 20px; 
 }
 
+button {
+	background-color: green;
+	display: block;
+	padding: 5px;
+}
+
 h1 {
 	text-align: center;
+}
+
+textarea {
+	color: black;
 }
 
 #login-card {
@@ -29,5 +40,16 @@ h1 {
 	z-index: 999;
 }
 
+#main-card {
+	width: 80%;
+	margin: 20px auto;
+	background-color: rgba(235, 175, 66, 0.9);
+	padding: 20px;
+}
+
+#main-card img {
+	display: block;
+	margin: 0 auto;
+}
 
 /*# sourceMappingURL=main.css.map */

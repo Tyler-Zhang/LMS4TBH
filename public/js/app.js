@@ -12,7 +12,8 @@ class App extends React.Component {
 		super();
 
 		this.state = {
-			id: null
+			id: null,
+			picture_url: null
 		}
 	}
 
@@ -26,8 +27,8 @@ class App extends React.Component {
 	render(){
 		return (
 			<div>
-				<LoginCard setAuth={(id) => this.setAuth(id)}/>
-				<MainCard id={this.state.id}/>
+				<LoginCard setAuth={(id) => this.setAuth(id)} setPicture={(pic) => this.setState({picture_url: pic})}/>
+				<MainCard picture_url={this.state.picture_url} id={this.state.id}/>
 			</div>
 		)
 	}

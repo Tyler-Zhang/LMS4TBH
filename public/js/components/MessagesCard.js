@@ -7,7 +7,7 @@ class Message extends React.Component{
             <li class="row" style={{margin:"10px"}}>
                 <div class="col-md-10 col-md-offset-1" style={{borderStyle:"solid", padding:"10px"}}> 
                     <div class="col-md-1">
-                        <img src="img/tempprofile.png"/>
+                        <img src={this.props.picture_url}/>
                         <p class="text-center">{this.props.name}</p>
                     </div>
                     <div class="col-md-8 col-md-offset-1">
@@ -87,13 +87,21 @@ export default class MessagesCard extends React.Component {
         if(!this.state.messages)
             return (<h1>No messages to post yet!</h1>);
 
+        this.setState({
+            messages: this.state.messages.map(v => {
+               FB.api('/' + v.id + '/picture', {width: 100, height: 100}, function(response) {
+                    v['picture_url'] = response.data.url;
+                }.bind(this));
+            })
+        })
+
         return(
             <div>
                 <h3 class="text-center" style={{marginBottom:"50px"}}> Messages For Approval</h3>
                 <div style={{overflow:"scroll", height:"500px"}}>
                     <ul style={{"listStyle": "none"}}>
                         {
-                            this.state.messages.map((v, i) =>  <Message name={v.name} message={v.tbh} key={i} post={(idx) => this.post(idx)} remove={(idx) => this.remove(idx)}/>)
+                            this.state.messages.map((v, i) =>  <Message name={v.name} picture_url={v.picture_url} message={v.tbh} key={i} post={(idx) => this.post(idx)} remove={(idx) => this.remove(idx)}/>)
                         }
                     </ul>
                 </div>
