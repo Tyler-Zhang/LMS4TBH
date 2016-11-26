@@ -11,7 +11,7 @@ export default class LoginCard extends React.Component{
 	componentDidMount() {
 	  window.fbAsyncInit = function() {
 	    FB.init({
-	      appId      : '223294414545251',
+	      appId      : '1287422431281153',
 	      cookie     : true,  // enable cookies to allow the server to access
 	                        // the session
 	      xfbml      : true,  // parse social plugins on this page
