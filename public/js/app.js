@@ -20,7 +20,7 @@ class App extends React.Component {
 		const state = this.state;
 
 		state.id = id;
-		this.setState(id);
+		this.setState(state);
 	}
 
 	render(){
