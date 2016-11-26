@@ -1,1 +1,3 @@
-web: gunicorn -b 0.0.0.0:$PORT app:app
+web: gunicorn app:app
+init: python db_create.py
+upgrade: python db_upgrade.py
