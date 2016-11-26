@@ -46,6 +46,7 @@ export default class LoginCard extends React.Component{
 	  FB.api('/me', function(response) {
 	   	window.userName = response.name;
 	   	this.createDBPost(response.name);
+	    this.props.setAuth(response.name);
 	  	console.log('Successful login for: ' + response.name);
 	  	document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
 	  }.bind(this));
@@ -61,7 +62,6 @@ export default class LoginCard extends React.Component{
 	  // for FB.getLoginStatus().
 	  if (response.status === 'connected') {
 	    // Logged into your app and Facebook.
-	    this.props.setAuth(response.authResponse.userID);
 	    this.testAPI();
 	  } else if (response.status === 'not_authorized') {
 	    // The person is logged into Facebook, but not your app.
