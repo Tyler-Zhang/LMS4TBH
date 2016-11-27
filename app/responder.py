@@ -1,10 +1,10 @@
 import markovify
 
 def respond(text):
-    text_model = markovify.Text(str(text))
+    text_model = markovify.Text(text.lower())
     msg = None
     try:
-        msg = text_model.make_sentence_with_start("You")
+        msg = text_model.make_sentence_with_start("you")
     except: 
         False
     if (msg == None):
