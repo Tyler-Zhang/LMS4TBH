@@ -1,7 +1,6 @@
 import markovify
 
 def respond(text):
-    print text
     text_model = markovify.Text(text)
     msg = None
     try:
