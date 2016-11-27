@@ -46,10 +46,12 @@ export default class MainCard extends React.Component {
 						<div class="col-md-4 col-md-offset-1">
 							<h1>Welcome, {window.userName}</h1>
 							<img src={this.props.picture_url} width='300' height='300' />
-							<p>Enter your TBH post: </p>
+							<h2>Enter your TBH post: </h2>
 							<textarea value={this.state.post_status} onChange={this.statusChange.bind(this)} rows="4" cols="50"></textarea>
-							<button onClick={this.postStatus.bind(this)}> Post Status </button>
-							<button onClick={this.generateTBH.bind(this)}> Generate TBHs </button>
+							<div>
+								<button onClick={this.postStatus.bind(this)}> Post Status </button>
+								<button onClick={this.generateTBH.bind(this)}> Generate TBHs </button>
+							</div>
 						</div>
 
 						<div class="col-md-6 col-md-offset-1">
