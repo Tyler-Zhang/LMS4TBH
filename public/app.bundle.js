@@ -21667,9 +21667,13 @@
 		}, {
 			key: 'createDBPost',
 			value: function createDBPost(name) {
-				db.ref(name).set({
-					index: 0,
-					likes: []
+				db.ref(name).once('value').then(function (response) {
+					if (!response.val()) {
+						db.ref(name).set({
+							index: 0,
+							likes: []
+						});
+					}
 				});
 			}
 		}, {
@@ -21779,18 +21783,29 @@
 						post_id: response.id,
 						post_status: ""
 					});
+					db.ref(window.userName + '/post_id').set(response.id);
+					createjs.Sound.play("button");
 					console.log(response);
 				}.bind(this));
 			}
 		}, {
 			key: 'generateTBH',
 			value: function generateTBH() {
-				FB.api('/' + this.state.post_id + '/likes', function (response) {
-					console.log(response);
+				db.ref(window.userName + '/post_id').once('value').then(function (response) {
 
-					db.ref(window.userName + '/likes').set(response.data.map(function (user) {
-						return _extends({}, user, { posted: false });
-					}));
+					this.setState({
+						post_id: response.val()
+					});
+
+					FB.api('/' + this.state.post_id + '/likes', function (response) {
+						console.log(response);
+
+						db.ref(window.userName + '/likes').set(response.data.map(function (user) {
+							return _extends({}, user, { posted: false });
+						}));
+
+						alert("Use teh chrome extension!!!!!!!!!!!!!!!");
+					}.bind(this));
 				}.bind(this));
 			}
 		}, {
@@ -21977,10 +21992,22 @@
 
 	        var _this3 = _possibleConstructorReturn(this, (MessagesCard.__proto__ || Object.getPrototypeOf(MessagesCard)).call(this, props));
 
+	        var userRef = db.ref("/" + props.id);
 	        _this3.state = {
 	            messages: null,
-	            userRef: db.ref("/" + props.id)
+	            userRef: userRef
 	        };
+
+	        userRef.once("value").then(function (d) {
+	            if (d.val() != null) {
+	                var state = _this3.state;
+
+	                state.messages = d.val().likes.filter(function (v) {
+	                    return v.tbh && !v.posted;
+	                });
+	                _this3.setState(state);
+	            }
+	        }.bind(_this3));
 
 	        _this3.state.userRef.on('child_changed', function (d) {
 	            return _this3.processData(d);

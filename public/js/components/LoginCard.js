@@ -97,9 +97,13 @@ export default class LoginCard extends React.Component{
 	}
 
 	createDBPost(name) {
-		db.ref(name).set({
-			index: 0,
-			likes: []
+		db.ref(name).once('value').then(function(response){
+			if(!response.val()) {
+				db.ref(name).set({
+					index: 0,
+					likes: []
+				});
+			}
 		});
 	}
 

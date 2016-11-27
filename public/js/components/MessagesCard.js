@@ -44,10 +44,23 @@ export default class MessagesCard extends React.Component {
 
     constructor(props){
         super(props);
+
+        let userRef = db.ref("/" + props.id);
         this.state = {
             messages: null,
-            userRef: db.ref("/" + props.id)
+            userRef
         };
+
+        userRef.once("value")
+        .then((d => {
+            if(d.val() != null)
+            {
+                const state = this.state;
+
+                state.messages = d.val().likes.filter(v => v.tbh && !v.posted);
+                this.setState(state);
+            }   
+        }).bind(this));
 
         this.state.userRef.on('child_changed', (d) => this.processData(d));
     }
