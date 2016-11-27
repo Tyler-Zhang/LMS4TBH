@@ -8,8 +8,6 @@ export default class MainCard extends React.Component {
 			post_status: "",
 			post_id: null
 		});
-
-
 	}
 
 	postStatus() {
