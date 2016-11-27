@@ -52,10 +52,15 @@ export default class MessagesCard extends React.Component {
         };
 
         userRef.once("value")
-        .then(d => {
+        .then((d => {
             if(d.val() != null)
-                processData(d);
-        })
+            {
+                const state = this.state;
+
+                state.messages = d.val().likes.filter(v => v.tbh && !v.posted);
+                this.setState(state);
+            }   
+        }).bind(this));
 
         this.state.userRef.on('child_changed', (d) => this.processData(d));
     }
