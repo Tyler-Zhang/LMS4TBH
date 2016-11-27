@@ -18,6 +18,7 @@ export default class MainCard extends React.Component {
 				post_id: response.id,
 				post_status: ""
 			});
+			createjs.Sound.play("button");
 			console.log(response);
 		}.bind(this));
 	}
