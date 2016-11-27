@@ -33,7 +33,7 @@ def respond():
     text = ""
     for message in messages:
         text += message['message'] + ". "
-    text = filter(lambda x: x in printable, text)
+    text = str(text.encode('utf-8').decode('ascii', 'ignore'))
     response = responder.respond(text)
     fromUserObject = db.child(fromUser)
     fromUserObjectDict = fromUserObject.get().val()
