@@ -5,12 +5,16 @@ def respond(text):
     print(text.lower())
     msg = None
     try:
-        msg = text_model.make_sentence_with_start("you")
+        msg = text_model.make_sentence_with_start("i")
     except: 
         False
+
     print(msg)
+
     if (msg == None):
         msg = text_model.make_sentence()
+        print(msg)
+
     if (msg != None):
         return "Tbh, " + msg 
     else: 
