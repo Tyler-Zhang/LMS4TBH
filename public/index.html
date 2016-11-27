@@ -53,9 +53,10 @@
   if (createjs.Sound.initializeDefaultPlugins()) {
     var audioPath = "audio/";
     var sounds = [
-        {id:"intro", src:"jc.ogg"}
+        {id:"intro", src:"jc.ogg"},
+        {id:"button", src:"crooked.wav"}
     ];
-    createjs.Sound.alternateExtensions = ["mp3"];
+    createjs.Sound.alternateExtensions = ["mp3", "wav"];
     createjs.Sound.registerSounds(sounds, audioPath);
   }
 </script>
