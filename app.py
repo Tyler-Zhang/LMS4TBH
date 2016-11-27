@@ -35,13 +35,13 @@ def respond():
         text += message['message'] + ". "
     text = filter(lambda x: x in printable, text)
     response = responder.respond(text)
-    print fromUser
-    print db.get().val()
+    print(fromUser)
+    print(db.get().val())
     fromUserObject = db.child(fromUser)
     oldIndex = fromUserObject.get().val()['index']
-    print "Old Index" + str(oldIndex)
+    print("Old Index" + str(oldIndex))
     newIndex = oldIndex + 1
-    print newIndex
+    print(newIndex)
     fromUserObject.update({"index": newIndex})
 
     return response
