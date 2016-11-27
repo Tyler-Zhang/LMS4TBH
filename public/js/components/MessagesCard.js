@@ -45,13 +45,7 @@ export default class MessagesCard extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            messages: [
-                {
-                name:"Charlie",
-                tbh:"hello man asdfdsaf asdfoj sadf asdf asdf asdf ",
-                id: 123
-            }
-            ],
+            messages: null,
             userRef: db.ref("/" + props.id)
         };
 
