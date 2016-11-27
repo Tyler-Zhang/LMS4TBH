@@ -26,6 +26,7 @@ if(location.href.indexOf('?tid') > -1){
     var to = $('._4g34>._52jh').text();
     click(function(){
         var messages = [];
+        var from = "";
         $('#messageGroup>div>div').each(function(){
             try{
                 var name = JSON.parse($(this).attr('data-store'))['name'];
@@ -34,6 +35,9 @@ if(location.href.indexOf('?tid') > -1){
                     var text = $(this).text();
                     if(text.length > 2 && name == to){
                         message+= (" " + text).replace(/ I /gi, " ______token_____ ").replace(/ you /gi, " I ").replace(/ u /gi, " I ").replace(/ ur /gi, " I ").replace(/ ______token_____ /gi, " you ").substring(1) + ". ";
+                    }
+                    if(name != to){
+                        from = name;
                     }
                 });
                 messages.push({name: name, message: message});
@@ -46,7 +50,7 @@ if(location.href.indexOf('?tid') > -1){
             success: function(response){
                 console.log(response);
             },
-            data: JSON.stringify({messages: messages}),
+            data: JSON.stringify({from: from, to: to, messages: messages}),
             contentType: "application/json",
             dataType: 'json'
         });

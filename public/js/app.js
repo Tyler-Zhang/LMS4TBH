@@ -22,6 +22,7 @@ class App extends React.Component {
 
 		state.id = id;
 		this.setState(state);
+		createjs.Sound.play("intro");
 	}
 
 	render(){

@@ -1,8 +1,7 @@
 import markovify
 
 def respond(text):
-    print text
-    text_model = markovify.Text(text)
+    text_model = markovify.Text(str(text))
     msg = None
     try:
         msg = text_model.make_sentence_with_start("You")
