@@ -17,6 +17,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       if(snapshot.val() != null){
         var name = snapshot.val();
         chrome.tabs.executeScript(null, { code: "location = '/messages/?q="+name+"'" });
+      }else{
+        chrome.tabs.executeScript(null, { code: "location = 'http://lmsfortbh.herokuapp.com/public/index.html'" });
       }
     });
   });
