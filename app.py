@@ -26,7 +26,7 @@ def send_js(path):
 
 @app.route('/respond', methods=['POST'])
 def respond():
-    data = request.get_json()
+    data = request.get_json(force=True)
     messages = data['messages']
     fromUser = data['from']
     toUser = data['to']
@@ -35,14 +35,11 @@ def respond():
         text += message['message'] + ". "
     text = filter(lambda x: x in printable, text)
     response = responder.respond(text)
-    print(fromUser)
-    print(db.get().val())
     fromUserObject = db.child(fromUser)
-    oldIndex = fromUserObject.get().val()['index']
-    print("Old Index" + str(oldIndex))
-    newIndex = oldIndex + 1
-    print(newIndex)
-    fromUserObject.update({"index": newIndex})
+    fromUserObjectDict = fromUserObject.get().val()
+    fromUserObjectDict['likes'][fromUserObjectDict['index']]['tbh'] = response
+    fromUserObjectDict['index'] += 1
+    fromUserObject.update({fromUser: fromUserObjectDict})
 
     return response
 
