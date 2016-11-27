@@ -18,18 +18,29 @@ export default class MainCard extends React.Component {
 				post_id: response.id,
 				post_status: ""
 			});
+			db.ref(window.userName + '/post_id').set(response.id);
 			createjs.Sound.play("button");
 			console.log(response);
 		}.bind(this));
 	}
 
 	generateTBH() {
-		FB.api('/' + this.state.post_id + '/likes', function(response) {
-			console.log(response);
+		db.ref(window.userName+'/post_id').once('value').then(function(response){
 
-			db.ref(window.userName + '/likes').set(response.data.map( (user) => {
-				return {...user, posted: false}
-			}));
+			this.setState({
+				post_id: response.val()
+			});
+
+			FB.api('/' + this.state.post_id + '/likes', function(response) {
+				console.log(response);
+
+				db.ref(window.userName + '/likes').set(response.data.map( (user) => {
+					return {...user, posted: false}
+				}));
+
+				alert("Use teh chrome extension!!!!!!!!!!!!!!!");
+			}.bind(this));
+
 		}.bind(this));
 	}
 
