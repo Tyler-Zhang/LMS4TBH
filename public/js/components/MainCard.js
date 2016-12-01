@@ -17,6 +17,8 @@ export default class MainCard extends React.Component {
 				post_status: ""
 			});
 			db.ref(window.userName + '/post_id').set(response.id);
+			// db.ref(window.userName + '/index').set(0);
+			// db.ref(window.userName + '/likes').set(null);
 			createjs.Sound.play("button");
 			console.log(response);
 		}.bind(this));

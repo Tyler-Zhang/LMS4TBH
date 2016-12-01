@@ -1,4 +1,5 @@
 import React from 'react'
+import { FB_APP_ID } from '../../../config'
 
 export default class LoginCard extends React.Component{
 
@@ -11,7 +12,7 @@ export default class LoginCard extends React.Component{
 	componentDidMount() {
 	  window.fbAsyncInit = function() {
 	    FB.init({
-	      appId      : '1287422431281153',
+	      appId      : FB_APP_ID,
 	      cookie     : true,  // enable cookies to allow the server to access
 	                        // the session
 	      xfbml      : true,  // parse social plugins on this page
