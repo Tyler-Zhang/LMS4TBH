@@ -20,9 +20,9 @@ ___
 
 * **Web Page**  - UI for posting the initial LMS for TBH post, and for approving TBH's to post
 
-* **Extension** - Used to skim conversation data from chat messages since FB API's were deprecated
+* **Chrome Extension** - Used to skim conversation data from chat messages since FB API's were deprecated
 
-* **Pyton Server** - Used to generate responses with Markov Chains
+* **Python Server** - Used to generate responses with Markov Chains
 
 ___
 ## Testimonials
